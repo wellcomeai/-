@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Чат - Общение с ИИ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 Чат с открытой LLM моделью</h1>
+            <div class="model-selector">
+                <label for="model-select">Выберите модель:</label>
+                <select id="model-select">
+                    <option value="mistral" selected>Mistral 7B (Рекомендуется)</option>
+                    <option value="llama">Llama 2 7B</option>
+                    <option value="falcon">Falcon 7B</option>
+                    <option value="phi">Phi-2</option>
+                    <option value="gemma">Gemma 7B</option>
+                </select>
+            </div>
+        </header>
+
+        <div class="chat-container" id="chat-container">
+            <div class="welcome-message">
+                <h2>Добро пожаловать!</h2>
+                <p>Начните общение с ИИ, написав сообщение ниже.</p>
+                <div class="info-box">
+                    <h3>ℹ️ Информация:</h3>
+                    <ul>
+                        <li>Используются бесплатные и открытые LLM модели через Hugging Face</li>
+                        <li>Первый запрос может занять время (модель загружается)</li>
+                        <li>API может иметь ограничения по количеству запросов</li>
+                        <li>Для лучшей производительности получите бесплатный API ключ на huggingface.co</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-container">
+            <textarea
+                id="user-input"
+                placeholder="Введите ваше сообщение..."
+                rows="3"
+            ></textarea>
+            <button id="send-button" onclick="sendMessage()">
+                <span id="send-icon">📤</span>
+                <span id="send-text">Отправить</span>
+            </button>
+        </div>
+
+        <div class="footer">
+            <button id="clear-button" onclick="clearChat()">🗑️ Очистить чат</button>
+            <p class="status" id="status">Готов к общению</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
